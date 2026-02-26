@@ -8,6 +8,7 @@ import ResetPassword from "../ResetPassword/ResetPassword";
 import Inventory from "../Inventory/Inventory";
 import Profile from "../Profile/Profile";
 import PersonalInformation from "../PersonalIformation/PersonalInformation";
+import Landing from "../Landing/Landing"
 
 const isAuthenticated = () => {
   return localStorage.getItem("token");
@@ -16,8 +17,8 @@ const isAuthenticated = () => {
 function Home() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-
+      <Route path="/" element={<Landing />} />
+      <Route path="/landing" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
