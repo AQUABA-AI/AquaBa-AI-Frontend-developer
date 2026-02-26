@@ -1,4 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useNavigate } from "react";
+import Profile from "../Profile/Profile";
+import Login from "../Login/Login"
 
 // ─────────────────────────────────────────────
 // API SERVICE LAYER (swap BASE_URL for real backend)
@@ -265,10 +267,12 @@ function InventoryModal({ item, onSave, onClose }) {
           {inp("Unit", "unit", "text", ["kg", "tonnes", "lbs", "pieces"])}
           {inp("Supply Date", "supplyDate", "date")}
           {inp("Qty Sold", "qtySold", "number")}
-          {inp("Qty Remaining", "qtyRemaining", "number")}
+          {inp("Sold Date", "soldDate", "date")}
           <div style={{ gridColumn: "1/-1" }}>{inp("Supplier", "supplier")}</div>
           <div style={{ gridColumn: "1/-1" }}>{inp("Storage Location", "location")}</div>
           {inp("Status", "status", "text", ["stocked", "out-of-stock"])}
+          {inp("Qty Remaining", "qtyRemaining", "number")}
+          
         </div>
         <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
           <button onClick={onClose} style={{ flex: 1, padding: "11px", background: "#f5f5f5", border: "none", borderRadius: 7, cursor: "pointer", fontWeight: 600, fontSize: 14 }}>Cancel</button>
@@ -364,16 +368,23 @@ export default function AquaBa() {
 
   const handleBackToDashboard = () => setActiveTab("dashboard");
 
+  const handleLogout= ()=> {setActiveTab("login")
+    setSidebarOpen(false)
+  }
+
   const tabs = [
     { id: "dashboard", icon: <Icon.dash />, label: "Dashboard" },
     { id: "inventory", icon: <Icon.inventory />, label: "Inventory" },
     { id: "alerts", icon: <Icon.bell />, label: "Alerts" },
     { id: "forecast", icon: <Icon.chart />, label: "Forecast" },
     { id: "trade", icon: <Icon.trade />, label: "Trade" },
+   
   ];
 
   // ── DASHBOARD TAB ──
   const DashboardView = () => (
+
+   
     <div>
       {/* Stat Cards */}
       <StatCard icon={<Icon.inventory />} label="Total Inventory" value={totalInventoryKg > 0 ? `${totalInventoryKg.toLocaleString()} kg` : null} sub="Current Stock across all locations" accent="blue" linkText={totalInventoryKg > 0 ? "View inventory breakdown" : "add new item"} onLink={() => setActiveTab("inventory")} />
@@ -461,7 +472,7 @@ export default function AquaBa() {
     <div style={{ background: "#fff", minHeight: "100%" }}>
   
       <div style={{ padding: "16px", display: "flex", flexDirection: "column", justifyContent: "space-between", borderBottom: "1px solid #eee" }}> 
-        <h2 style={{ fontSize: 17, fontWeight: 700, color:"black"}}>All Inventory ({inventory.length})</h2>
+        <h2 style={{ fontSize: 17, fontWeight: 700, color:"rgb(34, 34, 34)", marginBottom: 10 }}>All Inventory ({inventory.length})</h2>
         <div style={{ display: "flex", justifyContent: "space-between", width: "100%"}}> 
         
           <button  onClick={handleBackToDashboard} style={{ background: "#1a73e8", color: "#fff", border: "none", borderRadius: 6, padding: "9px 16px", fontSize: 13, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}>
@@ -504,6 +515,7 @@ export default function AquaBa() {
               <span style={{ background: sc.bg, color: sc.text, fontSize: 11, padding: "3px 9px", borderRadius: 12, fontWeight: 600 }}>{item.status}</span>
             </div>
             
+            <div style={{ display: "flex", flexDirection:"column", gap: 8, marginBottom: 12 }}>
             <div style={{ display: "flex", gap: 16, marginBottom: 12 }}>
               <div>
                 <div style={{ fontSize: 11, color: "#aaa" }}>Qty Stocked</div>
@@ -523,9 +535,24 @@ export default function AquaBa() {
               <div>
                 <div style={{ fontSize: 11, color: "#aaa" }}>Qty Remaining</div>
                 <div style={{ fontWeight: 600, fontSize: 13, color: "#333" }}>{Number(item.quantity - item.qtySold || 0).toLocaleString() || "-"} {item.unit}</div>
-              </div> 
-            
+              </div>  
+
             </div>
+
+            <div style={{ borderTop: "1px solid #eee", paddingTop: 14, display: "flex", gap: 16 }}>
+                <div>
+                    <div style={{ fontSize: 11, color: "#aaa" }}>Supply Date</div>
+                    <div style={{ fontWeight: 600, fontSize: 13, color: "#333" }}>{item.supplyDate || "–"}</div>
+                </div>
+
+                <div>
+                    <div style={{ fontSize: 11, color: "#aaa" }}>Sold Date</div>
+                    <div style={{ fontWeight: 600, fontSize: 13, color: "#333" }}>{item.soldDate || "–"}</div>
+                </div>
+                
+            </div>
+            </div>
+            
             <div style={{ display: "flex", gap: 8 }}>
               <button onClick={() => { setEditItem(item); setModal("edit"); }} style={{ flex: 1, padding: "8px", background: "#e3f2fd", color: "#1a73e8", border: "none", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}><Icon.edit /> Edit</button>
               <button onClick={() => handleDeleteInventory(item.id, item.name)} style={{ flex: 1, padding: "8px", background: "#ffebee", color: "#e53935", border: "none", borderRadius: 6, cursor: "pointer", fontWeight: 600, fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}><Icon.trash /> Delete</button>
@@ -600,8 +627,8 @@ export default function AquaBa() {
     </div>
   );
 
-  const views = { dashboard: <DashboardView />, inventory: <InventoryView />, alerts: <AlertsView />, forecast: <ForecastView />, trade: <TradeView /> };
-
+  const views = { dashboard: <DashboardView />, inventory: <InventoryView />, alerts: <AlertsView />, forecast: <ForecastView />, trade: <TradeView />, profile: <Profile/>, login: <Login/>};
+  
   return (
     <>
       <style>{`
@@ -618,8 +645,7 @@ export default function AquaBa() {
       <div style={{ maxWidth: 430, margin: "0 auto", minHeight: "100vh", background: "#f0f2f5", position: "relative" }}>
         {/* Header */}
         <div style={{ background: "#fff", padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid #eee", position: "sticky", top: 0, zIndex: 100 }}>
-      
-          <button style={{ background: "none", border: "none", cursor: "pointer", color: "#555", padding: 0 }}><Icon.user /></button>
+          <button onClick={() => setActiveTab("profile")} style={{ background: "none", border: "none", cursor: "pointer", color: "#555", padding: 0 }}><Icon.user /></button>
           <span style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: 20, color: "#1a73e8", letterSpacing: -0.5 }}>AquaBa</span>
           <button onClick={() => setSidebarOpen(!sidebarOpen)} style={{ background: "none", border: "none", cursor: "pointer", color: "#555", padding: 4 }}><Icon.menu /></button>
           
@@ -676,10 +702,10 @@ export default function AquaBa() {
                     </button>
                 </div>
 
-              <div style={{ borderTop: "1px solid #eee", padding: "16px 20px", margin:"270px 0"}}>
+              <div style={{ borderTop: "1px solid #eee", padding: "16px 20px", margin:"186px 0" }}>
                 
                 <button 
-                    // onClick={handleLogout} 
+                    onClick={handleLogout} 
                     style={{ 
                     width: "100%", 
                     padding: "10px", 

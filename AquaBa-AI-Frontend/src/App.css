@@ -1,9 +1,22 @@
- #root {
+ *, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; }
+
+#root {
   max-width: 1280px;
-  /* margin: 0 auto; */
-  /* padding: 2rem; */
-  text-align: center;
+ 
 } 
+
 
 /* Auth.css */
 
