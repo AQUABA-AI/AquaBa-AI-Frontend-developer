@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useNavigate } from "react";
 import Profile from "../Profile/Profile";
 import Login from "../Login/Login"
+// import Landing from "../Landing/LandingPage"
 
 // ─────────────────────────────────────────────
 // API SERVICE LAYER (swap BASE_URL for real backend)
@@ -628,7 +629,7 @@ export default function AquaBa() {
   );
 
   const views = { dashboard: <DashboardView />, inventory: <InventoryView />, alerts: <AlertsView />, forecast: <ForecastView />, trade: <TradeView />, profile: <Profile/>, login: <Login/>};
-  
+  console.log(views)
   return (
     <>
       <style>{`
