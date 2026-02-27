@@ -111,7 +111,7 @@ function Avatar({ bg, zIndex }) {
   );
 }
 
-// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
+// ─── MAIN COMPONENT ──────────
 function Landing() {
   const [btnHovered, setBtnHovered] = useState(false);
 
