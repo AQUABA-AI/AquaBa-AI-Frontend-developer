@@ -1,0 +1,44 @@
+/* src/components/buttons/OutlineButton.css */
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: transparent;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background var(--transition),
+              border-color var(--transition),
+              transform var(--transition);
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.75);
+  transform: translateY(-2px);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+/* Dark variant for use on light backgrounds */
+.btn-outline--dark {
+  color: var(--gray-700);
+  border-color: var(--gray-300, #cbd5e1);
+}
+
+.btn-outline--dark:hover {
+  background: var(--gray-100);
+  border-color: var(--gray-400);
+  color: var(--gray-900);
+}
