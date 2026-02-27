@@ -54,7 +54,9 @@ export default function Register() {
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleRegister}>
-        <h2>Register</h2>
+      <h3>AquaBa</h3>
+        <h2>Create Your Account</h2> 
+        <p>Join Thousands of Seafood Businesses</p> <br />
 
         <input
           type="text"
@@ -104,7 +106,7 @@ export default function Register() {
           required
         />
 
-        <button type="submit">Register</button>
+        <button type="submit">Create Account</button>
 
         <p>
           Already have an account? <Link to="/login">Login</Link>

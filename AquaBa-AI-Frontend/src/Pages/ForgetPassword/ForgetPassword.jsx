@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./ForgetPassword.css"
 
 export default function ForgotPassword({ setPage }) {
   const [email, setEmail] = useState("");
@@ -21,8 +22,11 @@ export default function ForgotPassword({ setPage }) {
 
   return (
     <div>
-      <h2>Forgot Password</h2>
-      <input type="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
+
+      <h2>Reset Your Password</h2>
+      <span>Enter your email to receive reset instructions.</span> <br />
+      <input type="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} /> 
+      <br />
       <button onClick={sendLink}>Send Reset Link</button>
     </div>
   );

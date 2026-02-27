@@ -55,7 +55,10 @@ export default function Login() {
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleLogin}>
-        <h2>Login</h2>
+        <h3>AquaBa</h3> <br />
+        <h2>Welcome Back</h2> 
+        <p>Manage your Seafood Inventory easily</p> <br />
+        
 
         <input
           type="email"
