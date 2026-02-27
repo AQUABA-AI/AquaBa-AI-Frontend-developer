@@ -65,11 +65,11 @@ function StatusBar() {
   );
 }
 
-// ─── FeatureItem ──────────────────────────────────────────────────────────────
+// ─── FeatureItem ─────────────────
 function FeatureItem({ icon, label }) {
   return (
     <li style={S.featureItem}>
-      <span style={S.featureIconCircle}>{icon}</span>
+       <span style={S.featureIconCircle}>{icon}</span>
       <span style={S.featureLabel}>{label}</span>
     </li>
   );
