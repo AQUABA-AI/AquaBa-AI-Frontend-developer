@@ -23,8 +23,8 @@ button { cursor: pointer; }
 .auth-container {
   min-height: 100vh;
   background: linear-gradient(
-      rgba(0, 0, 0, 0.55),
-      rgba(0, 0, 0, 0.55)
+      rgba(224, 218, 218, 0.55),
+      rgba(224, 218, 218, 0.55)
     ),
     url("../media/background.jpg");
   background-size: cover;
