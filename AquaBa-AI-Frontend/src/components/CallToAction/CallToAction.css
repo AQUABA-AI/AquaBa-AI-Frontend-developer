@@ -1,0 +1,117 @@
+/* src/components/sections/CallToAction.css */
+
+.cta {
+  padding: var(--space-20) 0;
+  background: var(--gray-50);
+}
+
+.cta__card {
+  background: var(--grad-cta);
+  border-radius: var(--radius-xl);
+  padding: var(--space-16) var(--space-12);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top-right glow */
+.cta__card::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,165,233,0.25) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Bottom-left glow */
+.cta__card::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,115,232,0.20) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.cta__eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: var(--space-4);
+}
+
+.cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--space-5);
+  position: relative;
+  z-index: 1;
+}
+
+.cta__subtitle {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.70);
+  max-width: 500px;
+  margin: 0 auto var(--space-10);
+  line-height: 1.65;
+  position: relative;
+  z-index: 1;
+}
+
+.cta__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.cta__note {
+  margin-top: var(--space-5);
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  position: relative;
+  z-index: 1;
+}
+
+/* Override primary button colours inside the dark CTA card */
+.cta__card .btn-primary {
+  background: #ffffff;
+  color: var(--blue-700);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.20);
+}
+
+.cta__card .btn-primary:hover {
+  background: #f0f9ff;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+}
+
+@media (max-width: 640px) {
+  .cta__card {
+    padding: var(--space-12) var(--space-6);
+  }
+  .cta__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cta__actions .btn-primary,
+  .cta__actions .btn-outline {
+    width: 100%;
+  }
+}
