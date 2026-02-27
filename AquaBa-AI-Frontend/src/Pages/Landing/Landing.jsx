@@ -107,7 +107,7 @@ function Avatar({ bg, zIndex }) {
   );
 }
 
-// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
+// ─── MAIN COMPONENT ──────────
 function Landing() {
   return (
     <>
