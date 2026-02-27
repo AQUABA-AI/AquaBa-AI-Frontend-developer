@@ -55,7 +55,10 @@ export default function Login() {
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleLogin}>
-        <h2>Login</h2>
+        <h3>AquaBa</h3> <br />
+        <h2>Welcome Back</h2> 
+        <p>Manage your Seafood Inventory easily</p> <br />
+        
 
         <input
           type="email"
@@ -78,7 +81,6 @@ export default function Login() {
         <p>
           <Link to="/forgot-password">Forgot Password?</Link>
         </p>
-
         <p>
           Don’t have an account? <Link to="/register">Register</Link>
         </p>
