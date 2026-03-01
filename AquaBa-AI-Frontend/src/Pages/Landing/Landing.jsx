@@ -1,3 +1,7 @@
+import { useState } from "react";
+import {useNavigate} from "react-router-dom"
+import S from "./../Landing/LandingPage"
+import AvatarIcons from '../../assets/Avatar-image.png'
 
 
 
@@ -61,11 +65,11 @@ function StatusBar() {
   );
 }
 
-// ─── FeatureItem ─────────────────
+// ─── FeatureItem ──────────────────────────────────────────────────────────────
 function FeatureItem({ icon, label }) {
   return (
     <li style={S.featureItem}>
-       <span style={S.featureIconCircle}>{icon}</span>
+      <span style={S.featureIconCircle}>{icon}</span>
       <span style={S.featureLabel}>{label}</span>
     </li>
   );
@@ -107,13 +111,105 @@ function Avatar({ bg, zIndex }) {
   );
 }
 
-// ─── MAIN COMPONENT ──────────
+// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 function Landing() {
+  const [btnHovered, setBtnHovered] = useState(false);
+
+  const features = [
+    { icon: <ClockIcon />, label: "Expiry tracking & alerts" },
+    { icon: <TrendIcon />, label: "AI demand forecasting"    },
+    { icon: <CartIcon />,  label: "Smart reorder suggestions" },
+  ];
+
+  const navigate = useNavigate()
+
   return (
     <>
-      
+      {/* Google Fonts */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #e8f3fb; }
+      `}</style>
+
+      <div style={S.page}>
+        <div style={S.shell}>
+           
+          {/* Background glow blob */}
+          <div style={S.glow} />
+
+          {/* iOS-style status bar */}
+          <StatusBar />
+
+          {/* Main content */}
+          <div style={S.content}>
+
+            {/* ── HEADLINE ── */}
+            <h1 style={S.headline}>
+              Smart Inventory<br />for Seafood
+            </h1>
+
+            {/* ── SUBHEADLINE ── */}
+            <p style={S.subheadline}>
+              Prevent spoilage, forecast demand, and{"\n"}
+              optimize stock with AI-powered insights.
+            </p>
+
+            {/* ── FEATURE LIST ── */}
+            <ul style={S.featureList}>
+              {features.map((f) => (
+                <FeatureItem key={f.label} icon={f.icon} label={f.label} />
+              ))}
+            </ul>
+
+            {/* ── CTA BUTTON ── */}
+            <button
+              style={{
+                ...S.ctaBtn,
+                ...(btnHovered ? S.ctaBtnHover : {}),
+              }}
+              onMouseEnter={() => setBtnHovered(true)}
+              onMouseLeave={() => setBtnHovered(false)}
+              onClick={() => navigate("/Login")}
+            >
+              Get Started Free
+              <span style={{ fontSize: 18, fontWeight: 400, marginLeft: 2 }}>→</span>
+            </button>
+
+            {/* ── SOCIAL PROOF ── */}
+            <div style={S.socialProof}>
+              {/* Overlapping avatars */}
+              <div style={S.avatars}>
+                {AVATAR_COLORS.map((bg, i) => (
+                  <Avatar
+                    key={i}
+                    bg={bg}
+                    zIndex={AVATAR_COLORS.length - i}
+                  />
+                ))}
+              </div>
+
+              {/* Stars + label */}
+              <div style={S.proofText}>
+                <div style={S.stars}>★★★★★</div>
+                <div style={S.proofLabel}>Trusted by 500+ businesses</div>
+              </div>
+            </div>
+
+          </div>{/* /content */}
+        </div>{/* /shell */}
+
+        
+      </div>{/* /page */}
+
+      <footer style={{...S.footer}}>
+         <div>
+            <p style={{...S.paragraphTop}}>No credit card required • 14-day free trial • Cancel anytime</p>
+            <p style={{...S.paragraphBottom}}>Trusted By: Pacific Seafood Ocean Fresh Coastal Catch</p>
+        </div>
+      </footer>
     </>
-  )
+  );
 }
 
-export default Landing
+export default Landing;
