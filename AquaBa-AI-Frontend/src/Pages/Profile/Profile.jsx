@@ -12,7 +12,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import React, { Component } from 'react'
-import ProfileIcon from '../../assets/Avatar-image.png'
+import ProfileIcon from '../../assets/Avatar-Image.png'
 import './Profile.css'
 
 
