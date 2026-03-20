@@ -14,7 +14,7 @@ const S = {
   // Mobile shell — matches screenshot width
   shell: {
     width: "100%",
-    maxWidth: 412,
+    maxWidth: "100%",
     minHeight: "100vh",
     position: "relative",
     overflow: "hidden",
@@ -59,7 +59,7 @@ const S = {
   content: {
     position: "relative",
     zIndex: 1,
-    paddingTop: 100
+    paddingTop: 20
   },
 
   // Headline
