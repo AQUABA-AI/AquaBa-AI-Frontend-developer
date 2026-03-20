@@ -1,0 +1,206 @@
+/* ─────────────────────────────────────────────
+   src/styles/PersonalInformation.css
+   Styles for the Personal Information page
+   (screenshot 2).
+───────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ── PAGE SHELL ── */
+.pi-page {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #ffffff;
+  font-family: 'Inter', sans-serif;
+  padding-bottom: 48px;
+}
+
+/* ── TOP HEADER BAR ── */
+/* Same as Profile page for consistency */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 20px 16px;
+  background: #ffffff;
+}
+
+.header-back {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #111;
+  padding: 0;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+/* ── AVATAR WITH CAMERA ── */
+/* Centred avatar + camera badge below it */
+.pi-avatar-wrap {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 6px 0 30px;
+  /* The camera badge sits outside the circle — we need overflow visible */
+  padding-bottom: 4px;
+}
+
+/* Brown circle avatar — same colour as Profile page */
+.pi-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #b5693a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pi-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* White two-letter initials */
+.pi-avatar span {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Camera icon — sits to the bottom-right of the circle */
+.pi-camera {
+  position: absolute;
+  /* centre + half avatar width (40px) − slight offset */
+  left: calc(50% + 22px);
+  bottom: 0px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* ── FORM ── */
+.pi-form {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── FIELD (label + input/select) ── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Blue label text — matches screenshot */
+.field__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a73e8;      /* blue label colour from screenshot */
+}
+
+/* ── TEXT INPUT ── */
+.field__input {
+  width: 100%;
+  padding: 14px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: #111;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.field__input:focus {
+  border-color: #1a73e8;
+}
+
+/* ── SELECT (dropdown) ── */
+/* Wraps the <select> so we can style the dropdown arrow */
+.field__select-wrap {
+  position: relative;
+}
+
+.field__select {
+  width: 100%;
+  padding: 14px 40px 14px 14px;   /* right padding for the arrow */
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: #111;
+  background: #ffffff;
+  outline: none;
+  appearance: none;               /* hides the default OS arrow */
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.field__select:focus {
+  border-color: #1a73e8;
+}
+
+/* Custom dropdown chevron drawn with CSS */
+.field__select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  /* Downward-pointing triangle */
+  border-left:   5px solid transparent;
+  border-right:  5px solid transparent;
+  border-top:    6px solid #888888;
+}
+
+/* ── UPDATE PROFILE BUTTON ── */
+/* Bright blue full-width button at the bottom */
+.btn-update {
+  margin-top: 8px;
+  width: 100%;
+  padding: 16px;
+  background: #1a73e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-update:hover {
+  background: #1558c0;
+}
+
+.btn-update:active {
+  background: #0d47a1;
+}
