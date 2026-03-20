@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import S from "./../Landing/LandingPage"
-import AvatarIcons from '../../assets/Avatar-image.png'
+
 
 
 
@@ -92,7 +92,7 @@ function Avatar({ bg, zIndex }) {
     }}>
       {/* Head */}
 
-       <img src={AvatarIcons} alt="" />
+       
       <div style={{
         position: "absolute", top: 7, left: "50%",
         transform: "translateX(-50%)",
