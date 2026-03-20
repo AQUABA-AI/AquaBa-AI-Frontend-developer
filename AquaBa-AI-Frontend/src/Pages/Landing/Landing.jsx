@@ -170,7 +170,7 @@ function Landing() {
               }}
               onMouseEnter={() => setBtnHovered(true)}
               onMouseLeave={() => setBtnHovered(false)}
-              onClick={() => navigate("/Login")}
+              onClick={() => navigate("/inventory")}
             >
               Get Started Free
               <span style={{ fontSize: 18, fontWeight: 400, marginLeft: 2 }}>→</span>
