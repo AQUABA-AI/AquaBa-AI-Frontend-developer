@@ -49,7 +49,7 @@ export default function Login() {
     localStorage.setItem("role", "user");
     localStorage.setItem("welcomeName", matchedUser.fullName);
 
-    navigate("/landing");
+    navigate("/inventory");
   };
 
   return (
