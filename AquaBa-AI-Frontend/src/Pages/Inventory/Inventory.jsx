@@ -644,12 +644,16 @@ export default function AquaBa() {
 
       <div style={{ maxWidth: 430, margin: "0 auto", minHeight: "100vh", background: "#f0f2f5", position: "relative" }}>
         {/* Header */}
+
+        {activeTab !== "login" && activeTab !== "register" && (
         <div style={{ background: "#fff", padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid #eee", position: "sticky", top: 0, zIndex: 100 }}>
           <button onClick={() => setActiveTab("profile")} style={{ background: "none", border: "none", cursor: "pointer", color: "#555", padding: 0 }}><Icon.user /></button>
           <span style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: 20, color: "#1a73e8", letterSpacing: -0.5 }}>AquaBa</span>
           <button onClick={() => setSidebarOpen(!sidebarOpen)} style={{ background: "none", border: "none", cursor: "pointer", color: "#555", padding: 4 }}><Icon.menu /></button>
           
         </div>
+
+        )}
 
         {/* Loading */}
         {loading && (
@@ -741,6 +745,8 @@ export default function AquaBa() {
         </div>
 
         {/* Bottom Nav */}
+
+        {activeTab !== "login" && activeTab !== "register" && "profile" && (
         <div style={{ position: "fixed", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: 430, background: "#fff", borderTop: "1px solid #eee", display: "flex", zIndex: 100 }}>
           {tabs.map(t => (
             <button key={t.id} onClick={() => setActiveTab(t.id)} style={{ flex: 1, padding: "10px 0 12px", background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 3, color: activeTab === t.id ? "#1a73e8" : "#aaa", fontWeight: activeTab === t.id ? 700 : 400, transition: "color .15s" }}>
@@ -751,7 +757,9 @@ export default function AquaBa() {
 
 
 
+
         </div>
+        )}
 
         {/* Modals */}
         {modal === "add" && <InventoryModal onSave={handleAddInventory} onClose={() => setModal(null)} />}
