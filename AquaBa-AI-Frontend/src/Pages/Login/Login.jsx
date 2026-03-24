@@ -10,6 +10,8 @@ export default function Login() {
 
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
+
+  const handleRegister =(e)=> navigate("/register");
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -89,7 +91,7 @@ export default function Login() {
         
          <div className="submit-forgot-password">
             <p className="forgot-password"><Link to="/forgot-password">Forgot Password?</Link></p>
-            <button className="auth-form-button" type="submit">Log In</button>
+            <button className="auth-form-button" type="button" onClick={handleLogin}>Log In</button>
          </div>
         
 
@@ -98,7 +100,7 @@ export default function Login() {
            <span>OR</span>
       
         </div>
-        <button className="auth-form-button create-button" type="submit">Create Account</button>
+        <button className="auth-form-button create-button" type="button" onClick={handleRegister}>Create Account</button>
         <p  className="terms-privacy">Terms & Privacy</p>
       </form>
     </div>

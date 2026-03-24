@@ -106,7 +106,7 @@
 
 .divider-container::before,
 .divider-container::after {
-  content: "__________________";
+  content: "______________";
   flex: 1;
   width: 50%;
   /* border-bottom: 1px solid var(--white); */
