@@ -55,35 +55,51 @@ export default function Login() {
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleLogin}>
-        <h3>AquaBa</h3> <br />
+        <h3 className="auth-form-heading-three">Aqua<span id="span">Ba</span></h3> <br />
         <h2>Welcome Back</h2> 
-        <p>Manage your Seafood Inventory easily</p> <br />
+        <p className="auth-form-paragraph">Manage your Seafood Inventory easily</p> <br />
+        
+         
+         <div className="input-container">
+            <label>Email</label>
+            <input
+              className="input-container-inputs"
+              type="email"
+              placeholder="Enter your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+         </div>
+
+
+         <div className="input-container">
+            <label>Password</label>
+            <input
+              className="input-container-inputs"
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+         </div>
+        
+         <div className="submit-forgot-password">
+            <p className="forgot-password"><Link to="/forgot-password">Forgot Password?</Link></p>
+            <button className="auth-form-button" type="submit">Log In</button>
+         </div>
         
 
-        <input
-          type="email"
-          placeholder="Email address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-
-        <button type="submit">Login</button>
-
-        <p>
-          <Link to="/forgot-password">Forgot Password?</Link>
-        </p>
-        <p>
-          Don’t have an account? <Link to="/register">Register</Link>
-        </p>
+        <div className="divider-container">
+         
+           <span>OR</span>
+      
+        </div>
+        <button className="auth-form-button create-button" type="submit">Create Account</button>
+        <p  className="terms-privacy">Terms & Privacy</p>
       </form>
     </div>
   );
